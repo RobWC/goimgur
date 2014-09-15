@@ -9,9 +9,20 @@ type GalleryImages struct {
 	Data []GalleryImage `json:"data"`
 }
 
+type CustomGallery struct {
+	ID         string    `json:"id"`          //The ID for the image
+	Name       string    `json:"name"`        //The name for the image
+	DateTime   int       `json:"datetime"`    //Time inserted into the gallery, epoch time
+	AccountURL string    `json:"account_url"` //The username of the account that uploaded it, or null.
+	Link       string    `json:"link"`        //The direct link to the the image
+	Tags       []Tags    `json:"tags"`        //An slice of all the tag names in the custom gallery
+	ItemCount  int       `json:"item_count"`  //The total number of gallery items in the custom gallery (only available when requesting the direct custom gallery).
+	Items      []Gallery `json:"items"`       //An slice of all the gallery items in the custom gallery (only available when requesting the direct custom gallery).
+}
+
 //GalleryImage The data model formatted for gallery images
 type GalleryImage struct {
-	ID          string `json:"id"`          //TheIDfor the image
+	ID          string `json:"id"`          //The ID for the image
 	Title       string `json:"title"`       //The title of the image.
 	Description string `json:"description"` //Description of the image.
 	DateTime    int    `json:"datetime"`    //Time inserted into the gallery, epoch time
